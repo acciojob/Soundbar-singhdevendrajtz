@@ -1,39 +1,31 @@
 //your JS code here. If required.
-// List of sounds (make sure these files exist inside "sounds" folder)
-const sounds = ["sound1.mp3", "sound2.mp3", "sound3.mp3"];
-
-const buttonsDiv = document.getElementById("buttons");
-
-// Create a button for each sound
-sounds.forEach((sound, index) => {
-  const btn = document.createElement("button");
-  btn.innerText = `Play ${index + 1}`;
-  btn.classList.add("btn");
-
-  btn.addEventListener("click", () => {
-    stopSounds(); // stop previous sound
-    const audio = new Audio(`sounds/${sound}`);
-    audio.play();
-    // store current audio in global variable
-    window.currentAudio = audio;
-  });
-
-  buttonsDiv.appendChild(btn);
-});
-
-// Create Stop button
-const stopBtn = document.createElement("button");
-stopBtn.innerText = "Stop";
-stopBtn.classList.add("btn", "stop");
-
-stopBtn.addEventListener("click", stopSounds);
-
-buttonsDiv.appendChild(stopBtn);
-
-// Function to stop all playing sounds
-function stopSounds() {
-  if (window.currentAudio) {
+const sounds=["https://actions.google.com/sounds/v1/foley/hand_claps_close.ogg" ,"https://actions.google.com/sounds/v1/alarms/spaceship_alarm.ogg","https://actions.google.com/sounds/v1/alarms/spaceship_alarm.ogg","https://actions.google.com/sounds/v1/alarms/spaceship_alarm.ogg", "https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg","https://actions.google.com/sounds/v1/alarms/medium_bell_ringing_near.ogg"]
+const buttons=document.querySelectorAll(".btn");
+const container=document.querySelector("#buttons")
+buttons.forEach((x,y)=>{
+	if(y<=5)
+	{
+buttons[y].addEventListener('click',function(e){
+	 if (window.currentAudio) {
     window.currentAudio.pause();
     window.currentAudio.currentTime = 0; // reset
   }
-}
+const audio = new Audio();
+	audio.src=`${sounds[y]}`
+	audio.play();
+    // store current audio in global variable
+    window.currentAudio = audio;
+
+							})
+	}
+	else if(y==6)
+	{
+		buttons[y].addEventListener('click',function(){
+		console.log("hello")	
+	 if (window.currentAudio) {
+    window.currentAudio.pause();
+    window.currentAudio.currentTime = 0; // reset
+  }
+	})
+			}
+	})
